@@ -68,7 +68,7 @@ echo "$packages" | while read -r line; do
     || echo "$line" >> /tmp/arch_install_failed
 
     if [ "$line" = "zsh" ]; then
-        # Set Zsh as default terminal for our user
+        # Set Zsh as default terminal the user
         chsh -s "$(which zsh)" "$name"
     fi
 
@@ -79,7 +79,6 @@ done
 
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 
-# Don't forget to replace "Phantas0s" by the username of your Github account
 curl https://raw.githubusercontent.com/ForgottenScream\
 /arch_installer/master/install_user.sh > /tmp/install_user.sh;
 
