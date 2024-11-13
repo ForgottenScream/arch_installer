@@ -23,9 +23,13 @@ apps=("essential" "Essentials" on
       "neovim" "Neovim" on
       "urxvt" "URxvt" on
       "js" "JavaScript tooling" off
+      "thorium" "Thorium" on
       "signal" "Signal" off
       "qutebrowser" "Qutebrowser (browser)" off
-      "lynx" "Lynx (browser)" off)
+      "lynx" "Lynx (browser)" off
+      "keepassxc" "KeepassXC" on
+      "galculator" "Galculator" on
+      "mullvad" "Mullvad tools (Recommended)")
 
 dialog --checklist \
 "You can now choose what group of application you want to install. \n\n\
