@@ -5,7 +5,7 @@ timedatectl set-ntp true
 
 # Welcome message.
 dialog --defaultno --title "Are you sure?" --yesno \
-"This is a personnal arch linux install. \n\n\
+"This is a personal arch linux install. \n\n\
 It will just DESTROY everything on the hard disk of your choice. \n\n\
 Do not say YES if you are not sure about what you are doing. \n\n\
 Are you sure?" 15 60 || exit
