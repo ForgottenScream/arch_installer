@@ -39,6 +39,7 @@ js,yarn,Dependency manager (for coc.vim)
 urxvt,rxvt-unicode,Terminal Urxvt
 urxvt,urxvt-tabbedex-mina86-git,Improved tabs for Urxvt (AUR)
 firefox,firefox,Browser Firefox
+thorium,thorium-browser-bin,fastest browser in the world apparently(AUR)
 qutebrowser,qutebrowser,Qutebrowser
 lynx,lynx,Text-based browser
 signal,signal-desktop,messaging
