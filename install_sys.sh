@@ -1,11 +1,9 @@
 #!/bin/bash
-
-# Never run pacman -Sy on your real system!
 pacman -Sy dialog --noconfirm
 
 timedatectl set-ntp true
 
-# Welcome message of type yesno - see `man dialog`
+# Welcome message.
 dialog --defaultno --title "Are you sure?" --yesno \
 "This is a personnal arch linux install. \n\n\
 It will just DESTROY everything on the hard disk of your choice. \n\n\
@@ -47,6 +45,7 @@ size=$(cat swap_size) && rm swap_size
 
 [[ $size =~ ^[0-9]+$ ]] || size=$default_size
 
+# How to wipe the disk
 dialog --no-cancel \
 --title "!!! DELETE EVERYTHING !!!" \
 --menu "Choose the way you'll wipe your hard disk ($hd)" \
