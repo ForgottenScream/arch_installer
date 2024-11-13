@@ -7,9 +7,9 @@ timedatectl set-ntp true
 
 # Welcome message of type yesno - see `man dialog`
 dialog --defaultno --title "Are you sure?" --yesno \
-"This is my personnal arch linux install. \n\n\
-It will just DESTROY EVERYTHING on the hard disk of your choice. \n\n\
-Don't say YES if you are not sure about what you're doing! \n\n\
+"This is a personnal arch linux install. \n\n\
+It will just DESTROY everything on the hard disk of your choice. \n\n\
+Do not say YES if you are not sure about what you are doing. \n\n\
 Are you sure?" 15 60 || exit
 
 dialog --no-cancel --inputbox "Enter a name for your computer." \
@@ -27,7 +27,7 @@ devices_list=($(lsblk -d | awk '{print "/dev/" $1 " " $4 " on"}' \
 
 dialog --title "Choose your hard drive" --no-cancel --radiolist \
 "Where do you want to install your new system? \n\n\
-Select with SPACE, valid with ENTER. \n\n\
+Select with SPACE, validate with ENTER. \n\n\
 WARNING: Everything will be DESTROYED on the hard disk!" \
 15 60 4 "${devices_list[@]}" 2> hd
 
@@ -58,9 +58,6 @@ dialog --no-cancel \
 hderaser=$(cat eraser); rm eraser
 
 # This function can wipe out a hard disk.
-# DO NOT RUN THIS FUNCTION ON YOUR ACTUAL SYSTEM!
-# If you did it, DO NOT CALL IT!!
-# If you did it, I'm sorry.
 function eraseDisk() {
     case $1 in
         1) dd if=/dev/zero of="$hd" status=progress 2>&1 \
@@ -126,7 +123,7 @@ if [ "$uefi" = 1 ]; then
     mount "${hd}1" /mnt/boot/efi
 fi
 
-# Install Arch Linux! Glory and fortune!
+# Install Arch Linux
 pacstrap /mnt base base-devel linux linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 
@@ -135,8 +132,8 @@ echo "$uefi" > /mnt/var_uefi
 echo "$hd" > /mnt/var_hd
 mv comp /mnt/comp
 
-# Don't forget to replace "Phantas0s" by the username of your Github account
-curl https://raw.githubusercontent.com/Phantas0s\
+# Install using the script.
+curl https://raw.githubusercontent.com/ForgottenScream\
 /arch_installer/master/install_chroot.sh > /mnt/install_chroot.sh
 
 arch-chroot /mnt bash install_chroot.sh
@@ -146,8 +143,8 @@ rm /mnt/var_hd
 rm /mnt/install_chroot.sh
 rm /mnt/comp
 
-dialog --title "To reboot or not to reboot?" --yesno \
-"Congrats! The install is done! \n\n\
+dialog --title "Reboot?" --yesno \
+"Installation Completed. \n\n\
 Do you want to reboot your computer?" 20 60
 
 response=$?
