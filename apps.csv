@@ -1,3 +1,4 @@
+essential,rxvt-unicode,the terminal
 essential,xorg,X server
 essential,xorg-xinit,Display server boot
 essential ,man ,Manual
