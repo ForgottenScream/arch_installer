@@ -5,7 +5,7 @@ timedatectl set-ntp true
 
 # Welcome message.
 dialog --defaultno --title "Are you sure?" --yesno \
-"This is a personal arch linux install. \n\n\
+"This is a personal Arch Linux install. \n\n\
 It will just DESTROY everything on the hard disk of your choice. \n\n\
 Do not say YES if you are not sure about what you are doing. \n\n\
 Are you sure?" 15 60 || exit
@@ -34,7 +34,7 @@ hd=$(cat hd) && rm hd
 # Ask for the size of the swap partition
 default_size="8"
 dialog --no-cancel --inputbox \
-"You need four partitions: Boot, Root and Swap \n\
+"You need three partitions: Boot, Root and Swap \n\
 The boot partition will be 512M \n\
 The root partition will be the remaining of the hard disk \n\n\
 Enter below the partition size (in Gb) for the Swap. \n\n\
@@ -56,7 +56,7 @@ dialog --no-cancel \
 
 hderaser=$(cat eraser); rm eraser
 
-# This function can wipe out a hard disk.
+# This function will wipe out a hard disk.
 function eraseDisk() {
     case $1 in
         1) dd if=/dev/zero of="$hd" status=progress 2>&1 \
