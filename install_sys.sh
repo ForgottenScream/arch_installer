@@ -11,3 +11,7 @@ dialog --defaultno --title "Are you Sure?" --yesno \
     Do not say YES if you are not sure what you are doing. \n\n\
     Do you want to continue?" 15 60 || exit
 
+# enter hostname
+dialog --no-cancel --inputbox "Enter a name for your computer." \
+    10 60 2> comp
+
