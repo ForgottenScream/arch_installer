@@ -56,6 +56,7 @@ dialog --no-cancel \
 
 hderaser=$(cat eraser); rm eraser
 
+#This function is for erasing the disk either with dd or shred
 function eraseDisk() {
     case $1 in
         1) dd if=/dev/zero of="$hd" status=progress 2>&1 \
@@ -72,6 +73,83 @@ function eraseDisk() {
 
 eraseDisk "$hderaser"
 
-# Creating Partitions
+# Creating Partitions - to clear confusions, fdisk uses numbers for boot type
+# 4 is for BIOS and UEFI is 1, could define variable uefi as 4 then change to 1 but idk
 boot_partition_type=1
 [[ "$uefi" == 0 ]] && boot_partition_type=4
+
+# Create the partitions
+#Be careful with this bit, the spaces are there for a reason..
+#g - create non empty GPT partition table
+#n - create new partition
+#p - primary partition
+#e - extended partition
+#w - write the table to disk and exit
+
+partprobe "$hd"
+
+fdisk "$hd" << EOF
+g
+n
+
+
++512M
+t
+$boot_partition_type
+n
+
+
++${size}G
+n
+
+
+
+w
+EOF
+
+partprobe "$hd"
+
+# Add a suffix "p" in case we have a NVMe controller chip
+echo "$hd" | grep -E 'nvme' &> /dev/null && hd="${hd}p"
+
+# Format the partitions
+mkswap "${hd}2"
+swapon "${hd}2"
+mkfs.ext4 "${hd}3"
+mount "${hd}3" /mnt
+
+if [ "$uefi" = 1 ]; then
+    mkfs.fat -F32 "${hd}1"
+    mkdir -p /mnt/boot/efi
+    mount "${hd}1" /mnt/boot/efi
+fi
+
+# Install Arch Linux!
+pacstrap /mnt base base-devel linux linux-firmware
+genfstab -U /mnt >> /mnt/etc/fstab
+
+# Persist important values for the next script
+echo "$uefi" > /mnt/var_uefi
+echo "$hd" > /mnt/var_hd
+mv comp /mnt/comp
+
+curl https://raw.githubusercontent.com/ForgottenScream\
+/arch_installer/main/install_chroot.sh > /mnt/install_chroot.sh
+
+arch-chroot /mnt bash install_chroot.sh
+
+rm /mnt/var_uefi
+rm /mnt/var_hd
+rm /mnt/install_chroot.sh
+rm /mnt/comp
+
+dialog --title "To reboot or not to reboot?" --yesno \
+"The install is completed. \n\n\
+Do you want to reboot your computer?" 20 60
+
+response=$?
+
+case $response in
+    0) reboot;;
+    1) clear;;
+esac
