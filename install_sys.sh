@@ -1,12 +1,9 @@
 #!/bin/bash
 
-#Never run pacman -Sy on your system!
-pacman -Sy dialog
+pacman -Sy dialog --noconfirm
 
-# set date and time
 timedatectl set-ntp true
 
-# first prompt, giving the last hail mary before using the script
 dialog --defaultno --title "Are you Sure?" --yesno \
     "This is my personal arch linux install. \n\n\
     It will destroy everything on one of your hard disks. \n\n\
