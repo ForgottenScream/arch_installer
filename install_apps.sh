@@ -1,4 +1,4 @@
-#!/bin/bash
+g!/bin/bash
 
 name=$(cat /tmp/user_name)
 
@@ -9,7 +9,7 @@ curl https://raw.githubusercontent.com/ForgottenScream\
 
 dialog --title "Welcome!" \
 --msgbox "Welcome to the installation script for your apps and dotfiles!" \
-10 60
+    10 60
 
 apps=("essential" "Essentials" on
       "network" "Network" on
@@ -39,7 +39,7 @@ You can select an option with SPACE and validate your choices with ENTER." \
 "${apps[@]}" 2> app_choices
 choices=$(cat app_choices) && rm app_choices
 
-#This creates a regex to only select the packages we want.
+# Creates a regex to only select the packages we want.
 selection="^$(echo $choices | sed -e 's/ /,|^/g'),"
 lines=$(grep -E "$selection" "$apps_path")
 count=$(echo "$lines" | wc -l)
@@ -69,7 +69,7 @@ echo "$packages" | while read -r line; do
     || echo "$line" >> /tmp/arch_install_failed
 
     if [ "$line" = "zsh" ]; then
-        # Set zsh as default terminal for our user
+        # Set Zsh as default terminal for our user
         chsh -s "$(which zsh)" "$name"
     fi
 
@@ -82,7 +82,7 @@ echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 
 # invoke final script
 curl https://raw.githubusercontent.com/ForgottenScream\
-    /arch_installer/main/install_user.sh > /tmp/install_user.sh;
+/arch_installer/main/install_user.sh > /tmp/install_user.sh;
 
 #Switch user and run the final script
 sudo -u "$name" sh /tmp/install_user.sh
