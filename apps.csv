@@ -14,8 +14,8 @@ tools,scrot,Screenshot software
 tools,udiskie,Automount devices
 tools,xcape,Configure modifier keys to act as other keys
 tools,btop,Interactive process viewer
-tools,tmux,Terminal multiplexer
-tools,tmuxp,Configure tmux session + windows + panes via config files
+tmux,tmux,Terminal multiplexer
+tmux,tmuxp,Configure tmux session + windows + panes via config files
 notifier,dunst,Notification system
 notifier,libnotify,Notifier
 git,git,Version control system
@@ -40,7 +40,7 @@ qutebrowser,qutebrowser,Qutebrowser
 lynx,lyxn,Text-based browser
 zathura,zathura,Minimalistic document viewer
 zathura,zathura-pdf-mupdf,PDF Support for Zathura
-coms,signal-desktop,Signal Desktop Client
+signal,signal-desktop,Signal Desktop Client
 games,luanti,Minecraft but better
 audio,pulseaudio,Pulseaudio
 audio,pulseaudio-alsa,Extra support
