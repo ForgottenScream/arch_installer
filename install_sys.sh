@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Never run pacman -Sy on your system!
-pacman -Sy dialog --noconfirm
+pacman --noconfirm -Sy dialog
 
 # set date and time
 timedatectl set-ntp true
