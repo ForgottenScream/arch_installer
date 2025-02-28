@@ -4,42 +4,38 @@ name=$(cat /tmp/user_name)
 
 apps_path="/tmp/apps.csv"
 
+# Don't forget to replace "Phantas0s" by the username of your Github account
 curl https://raw.githubusercontent.com/ForgottenScream\
 /arch_installer/main/apps.csv > $apps_path
 
 dialog --title "Welcome!" \
---msgbox "Welcome to the installation script for your apps and dotfiles!" \
+--msgbox "Welcome to the install script for your apps and dotfiles!" \
     10 60
 
+# Allow the user to select the group of packages he (or she) wants to install.
 apps=("essential" "Essentials" on
       "network" "Network" on
-      "tools" "Recommend these tools" on
+      "tools" "Nice tools to have (highly recommended)" on
       "tmux" "Tmux" on
-      "notifier" "Notification Tools" on
-      "git" "Git & Git tools" on
+      "notifier" "Notification tools" on
+      "git" "Git & git tools" on
       "i3" "i3 wm" on
       "zsh" "The Z-Shell (zsh)" on
       "neovim" "Neovim" on
       "urxvt" "URxvt" on
-      "firefox" "Firefox (Browser)" off
-      "js" "JavaScript Tooling" off
-      "qutebrowser" "Qutebrowser (Browser)" off
-      "lynx" "Lynx (browser)" off
-      "zathura" "Zathura - PDF Reader" on
-      "signal" "Signal Desktop" on
-      "games" "Selection of games" off
-      "audio" "Audio stuff - recommended" on
-      "video" "Video stuff - recommended" on
-      "extra" "Extra stuff, can use" off)
+      "firefox" "Firefox (browser)" off
+      "js" "JavaScript tooling" off
+      "qutebrowser" "Qutebrowser (browser)" off
+      "lynx" "Lynx (browser)" off)
 
 dialog --checklist \
-"You can now choose the groups of applications you want to install. \n\n\
-You can select an option with SPACE and validate your choices with ENTER." \
+"You can now choose what group of application you want to install. \n\n\
+You can select an option with SPACE and valid your choices with ENTER." \
 0 0 0 \
 "${apps[@]}" 2> app_choices
 choices=$(cat app_choices) && rm app_choices
 
-# Creates a regex to only select the packages we want.
+# Create a regex to only select the packages we want
 selection="^$(echo $choices | sed -e 's/ /,|^/g'),"
 lines=$(grep -E "$selection" "$apps_path")
 count=$(echo "$lines" | wc -l)
@@ -80,9 +76,9 @@ done
 
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 
-# invoke final script
+# Don't forget to replace "Phantas0s" by the username of your Github account
 curl https://raw.githubusercontent.com/ForgottenScream\
 /arch_installer/main/install_user.sh > /tmp/install_user.sh;
 
-#Switch user and run the final script
+# Switch user and run the final script
 sudo -u "$name" sh /tmp/install_user.sh
