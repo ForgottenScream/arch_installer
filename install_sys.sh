@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Never run pacman -Sy on your system!
-pacman -Sy dialog
+pacman -Sy dialog --noconfirm
 
 # set date and time
 timedatectl set-ntp true
@@ -17,6 +17,8 @@ dialog --defaultno --title "Are you Sure?" --yesno \
 dialog --no-cancel --inputbox "Enter a name for your computer." \
     10 60 2> comp
 
+comp=$(cat comp) && rm comp
+
 # verify the boot (UEFI or BIOS)
 uefi=0
 ls /sys/firmware/efi/efivars 2> /dev/null && uefi=1
@@ -29,7 +31,7 @@ dialog --title "Choose your hard drive" --no-cancel --radiolist \
     "Where do you want to install your new system? \n\n\
     Select with SPACE, validate with ENTER. \n\n\
     WARNING: Everything will be DESTROYED on the hard disk!" \
-    15 60 4 "${devices_list[@]}" 2>
+    15 60 4 "${devices_list[@]}" 2> hd
     hd=$(cat hd) && rm hd
 
 # Partitioning and installing Arch Linux
