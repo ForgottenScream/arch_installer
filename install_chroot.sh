@@ -32,7 +32,7 @@ ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
 echo "en_GB.UTF-8 UTF-8" >> /etc/locale.gen
 echo "pt_PT.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
-echo "LANG=en_GB.UTF-8" > /etc/locale.gonf
+echo "LANG=en_GB.UTF-8" > /etc/locale.conf
 
 # Set keymap layout, mine is colemak so
 loadkeys colemak
@@ -83,7 +83,6 @@ dialog --title "Add user" \
     10 60
 config_user
 
-# at this point arch is fully configured, functionally speaking- moving on to applications
 
 echo "$name" > /tmp/user_name
 
