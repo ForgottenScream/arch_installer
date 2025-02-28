@@ -39,7 +39,7 @@ default_size="8"
 dialog --no-cancel --inputbox \
     "You need three partitions: Boot, Root and Swap \n\
     The boot partition will be 512M \n\
-    The root partition will be the rmeaining of the hard disk \n\n\
+    The root partition will be the remaining of the hard disk \n\n\
     Enter below the partition size (in Gb) for the Swap. \n\n\
     If you do not enter anything, it will default to ${default_size}G. \n" \
     20 60 2> swap_size

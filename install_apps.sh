@@ -7,7 +7,7 @@ apps_path="/tmp/apps.csv"
 curl https://raw.githubusercontent.com/ForgottenScream\
 /arch_installer/main/apps.csv > $apps_path
 
-dialog --title "Welcome!"\
+dialog --title "Welcome!" \
 --msgbox "Welcome to the installation script for your apps and dotfiles!" \
 10 60
 

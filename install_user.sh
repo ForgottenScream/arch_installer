@@ -1,4 +1,4 @@
-mkdir -p "/home/$(whoami)/Documents"
+gkdir -p "/home/$(whoami)/Documents"
 mkdir -p "/home/$(whoami)/Downloads"
 
 # Setting keymap to colemak
@@ -10,7 +10,7 @@ aur_install() {
         && cd "$1" \
         && makepkg --noconfirm -si \
         && cd - \
-        && rm -rf "$1" "$1.tar.gz";
+        && rm -rf "$1" "$1.tar.gz"
 }
 
 aur_check() {
