@@ -1,6 +1,9 @@
 mkdir -p "/home/$(whoami)/Documents"
 mkdir -p "/home/$(whoami)/Downloads"
 
+# Setting keymap to colemak
+localectl --no-convert set-x11-keymap gb -variant colemak
+
 aur_install() {
     curl -O "https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz" \
         && tar -xvf "$1.tar.gz" \
@@ -24,6 +27,7 @@ aur_check() {
 cd /tmp
 dialog --infobox "Installing \"Yay\", an AUR helper..." 10 60
 aur_check yay
+
 count=$(wc -l < /tmp/aur_queue)
 c=0
 
