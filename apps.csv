@@ -1,23 +1,37 @@
+essential,mesa-libgl,opengl
 essential,xorg,X server
 essential,xorg-xinit,Display server boot
-essential,python-dbus,Useful for certain things
-essential,curl,Transfer a URL
 essential,man,Manual
 essential,man-pages,Manual pages
-essential,tldr,Practical Manual
-network,openssh,Remote login tool for SSH protocol
+essential,tldr,Examples for CLIs
+essential,moreutils,More utils
+essential,python-dbus,Useful for certain things
 network,networkmanager,Network manager
-network,mullvad-vpn-cli,Mullvad VPN CLI client (AUR)
-tools,xsel,Manipulate the X selection
-tools,fzf,Command line fuzzy finder
-tools,scrot,Screenshot software
-tools,udiskie,Automount devices
-tools,xcape,Configure modifier keys to act as other keys
+network,openssh,Remote login tool for SSH protocol
+network,wget,Tool for retrieving files using HTTP HTTPS FTP and FTPS
+network,mullvad-vpn-cli,Mullvad VPN (AUR)
+network,lynx,CLI Browser
+compression,unzip,Compress / uncompress zip files
+audio,alsa-utils,Utils to control sound card
+audio,pipewire,Low level multimedia framework
+audio,pipewire-alsa,Sound Architecture
+audio,pipewire-pulse,Sound Middleware
+audio,pavucontrol,Control panel for input hardware
+audio,pulsemixer,Alternative to pavucontrol in terminal
+tools,picom,Compositor for X - manage transparency
 tools,btop,Interactive process viewer
+tools,boxes,Draw ASCII boxes in terminal - ESSENTIAL! (AUR)
+tools,xsel,Manipulate the X selection
+tools,xcape,Configure modifier key
+tools,bc,Calculator
+tools,fzf,Command line fuzzy finder
+tools,noto-fonts-emoji,Fonts for emojis
+tools,scrot,Screenshot software for i3lock
+tools,xclip,CLI to Clipboard
+tools,redshift,Adjust color of screen
+tools,udiskie,Automount devices
 tmux,tmux,Terminal multiplexer
 tmux,tmuxp,Configure tmux session + windows + panes via config files
-notifier,dunst,Notification system
-notifier,libnotify,Notifier
 git,git,Version control system
 git,diff-so-fancy,Human readable git diff
 i3,i3-wm,i3 window tile manager
@@ -25,31 +39,41 @@ i3,i3status,i3 status bar
 i3,i3lock-color,i3 lock monitor (AUR)
 i3,dmenu,Dynamic menu for X
 i3,feh,X11 image viewer
+i3,xdg-utils,Allow application to interact with the desktop
 i3,brightnessctl,To control screen brightness
+notify,dunst,Notification system
+notify,libnotify,Notifier
+programming,npm,Infamous javascript package manager
+programming,yarn,Wrapper for npm
+programming,ctags,Generates an index file of language objects found in source files
+programming,sql-language-server,sql language server (AUR)
+programming,bash-language-server,bash language server (AUR)
+programming,ltex-ls-bin,Language server for grammar (AUR)
 zsh,zsh,Unix shell (Z-Shell)
 zsh,zsh-completions,Additional completions for Zsh
 zsh,zsh-syntax-highlighting,Syntax highlighting for ZSH
-neovim,neovim,Editor Everything else really
+neovim,neovim,Editor... and much more
 neovim,python-neovim,Python for neovim
+neovim,python2-neovim,Python2 for neovim
 neovim,ruby-neovim,Ruby for neovim (AUR)
-js,nodejs,Nodejs (for coc.vim)
-js,yarn,Dependency manager (for coc.vim)
 urxvt,rxvt-unicode,Terminal Urxvt
+ripgrep,ripgrep,Line oriented search tool (grep improved)
+multimedia,mpv,Free video player
+office,libreoffice,Office suite
+office,zathura-pdf-mupdf,Highly customizable PDF reader
+office,scribus,Document editing software
+pandoc,pandoc,Document converter
+pandoc,lua-lpeg,Necessary library for Pandoc Lua filters
+pandoc,texlive-most,Tex Document Production System
+pandoc,texlive-most-doc,Most doc for LaTex (AUR)
 firefox,firefox,Browser Firefox
-qutebrowser,qutebrowser,Qutebrowser
-lynx,lyxn,Text-based browser
-zathura,zathura,Minimalistic document viewer
-zathura,zathura-pdf-mupdf,PDF Support for Zathura
-signal,signal-desktop,Signal Desktop Client
-games,luanti,Minecraft but better
-audio,pulseaudio,Pulseaudio
-audio,pulseaudio-alsa,Extra support
-audio,pacucontrol,Control audio
-audio,flac,Flac audio- u want this
-video,mpv,To watch videos
+qutebrowser,qutebrowser,Mouseless browser
+keepass,keepassxc,Secure password management
+cherrytree,cherrytree,Useful for note taking
+qbittorrent,qbittorrent,Torrenting Client
 video,freetube-bin,Watch youtube (AUR)
 phone,android-file-transfer,Transfer files to and from your phone.
 phone,scrcpy,Share your phone screen onto your system.
-extra,bc,Terminal calculator
-extra,cherrytree,Useful for note taking
-extra,qbittorrent,Torrenting Client
+signal,signal-desktop,Signal Desktop Client
+luanti,luanti,Minecraft but better
+audio,flac,Flac audio- u want this
