@@ -59,7 +59,7 @@ add-multilib-repo() {
 }
 
 dialog-welcome() {
-    dialog --title "Welcome!" --msgbox "Welcome to Phantas0s dotfiles and software installation script for Arch linux.\n" 10 60
+    dialog --title "Welcome!" --msgbox "Welcome to the ForgottenScream's dotfiles and software installation script for Arch linux.\n" 10 60
 }
 
 dialog-choose-apps() {
