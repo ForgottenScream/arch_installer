@@ -12,6 +12,7 @@ network,wget,Tool for retrieving files using HTTP HTTPS FTP and FTPS
 network,mullvad-vpn-cli,Mullvad VPN (AUR)
 network,lynx,CLI Browser
 compression,unzip,Compress / uncompress zip files
+audio,flac,Flac audio
 audio,alsa-utils,Utils to control sound card
 audio,pipewire,Low level multimedia framework
 audio,pipewire-alsa,Sound Architecture
@@ -76,4 +77,3 @@ phone,android-file-transfer,Transfer files to and from your phone.
 phone,scrcpy,Share your phone screen onto your system.
 signal,signal-desktop,Signal Desktop Client
 luanti,luanti,Minecraft but better
-audio,flac,Flac audio- u want this
