@@ -3,12 +3,13 @@
 name=$(cat /tmp/user_name)
 
 apps_path="/tmp/apps.csv"
+
 curl https://raw.githubusercontent.com/ForgottenScream\
-    /arch_installer/main/apps.csv > $apps_path
+/arch_installer/main/apps.csv > $apps_path
 
 dialog --title "Welcome!"\
-    --msgbox "Welcome to the installation script for your apps and dotfiles!" \
-    10 60
+--msgbox "Welcome to the installation script for your apps and dotfiles!" \
+10 60
 
 apps=("essential" "Essentials" on
       "network" "Network" on
@@ -32,13 +33,13 @@ apps=("essential" "Essentials" on
       "extra" "Extra stuff, can use" off)
 
 dialog --checklist \
-    "You can now choose the groups of applications you want to install. \n\n\
-    You can select an option with SPACE and validate your choices with ENTER." \
-    0 0 0 \
-    "${apps[@]}" 2> app_choices
+"You can now choose the groups of applications you want to install. \n\n\
+You can select an option with SPACE and validate your choices with ENTER." \
+0 0 0 \
+"${apps[@]}" 2> app_choices
+choices=$(cat app_choices) && rm app_choices
 
-    choices=$(cat app_choices) && rm app_choices
-
+#This creates a regex to only select the packages we want.
 selection="^$(echo $choices | sed -e 's/ /,|^/g'),"
 lines=$(grep -E "$selection" "$apps_path")
 count=$(echo "$lines" | wc -l)
@@ -49,18 +50,19 @@ echo "$selection" "$lines" "$count" >> "/tmp/packages"
 pacman -Syu --noconfirm
 
 rm -f /tmp/aur_queue
+
 dialog --title "Let's go!" --msgbox \
-    "The system will now install everything you need.\n\n\
-    It will take some time.\n\n " \
-    13 60
+"The system will now install everything you need.\n\n\
+It will take some time.\n\n " \
+13 60
 
 c=0
 echo "$packages" | while read -r line; do
     c=$(( "$c" + 1 ))
 
     dialog --title "Arch Linux Installation" --infobox \
-        "Downloading and installing program $c out of $count: $line..." \
-        8 70
+    "Downloading and installing program $c out of $count: $line..." \
+    8 70
 
     ((pacman --noconfirm --needed -S "$line" > /tmp/arch_install 2>&1) \
     || echo "$line" >> /tmp/aur_queue) \
