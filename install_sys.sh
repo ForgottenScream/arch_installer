@@ -136,8 +136,8 @@ echo "$hd" > /mnt/var_hd
 mv comp /mnt/comp
 
 # Don't forget to replace "Phantas0s" by the username of your Github account
-curl https://raw.githubusercontent.com/Phantas0s\
-/arch_installer/master/install_chroot.sh > /mnt/install_chroot.sh
+curl https://raw.githubusercontent.com/ForgottenScream\
+/arch_installer/main/install_chroot.sh > /mnt/install_chroot.sh
 
 arch-chroot /mnt bash install_chroot.sh
 
