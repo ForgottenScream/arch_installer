@@ -20,7 +20,6 @@ audio,pavucontrol,Control panel for input hardware
 audio,pulsemixer,Alternative to pavucontrol in terminal
 tools,picom,Compositor for X - manage transparency
 tools,btop,Interactive process viewer
-tools,boxes,Draw ASCII boxes in terminal - ESSENTIAL! (AUR)
 tools,xsel,Manipulate the X selection
 tools,xcape,Configure modifier key
 tools,bc,Calculator
