@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # get variables from last script
-uefi=$(cat /var_uefi; hd=$(cat /var_hd);
+uefi=$(cat /var_uefi); hd=$(cat /var_hd);
 
 # set hostname defined in last script
 cat /comp > /etc/hostname && rm /comp
