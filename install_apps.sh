@@ -92,7 +92,7 @@ dialog-choose-apps() {
         "signal" "Signal Desktop" on
         "luanti" "Minecraft but better" on)
 
-    dialog --checklist "You can now choose the groups of applications you want to install, according to your own CSV file.\n\n Press SPACE to select and ENTER to validate your choices." 0 0 0 "${apps[@]}" 2> "$file"
+    dialog --checklist "You can now choose the groups of applications you want to install.\n\n Press SPACE to select and ENTER to validate your choices." 0 0 0 "${apps[@]}" 2> "$file"
 }
 
 extract-choosed-apps() {

@@ -24,15 +24,17 @@ run() {
     set-hardware-clock
 
     log INFO "SET TIMEZONE" "$output"
-    # timedatectl set-timezone "Europe/Berlin"
-    ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
+    # timedatectl set-timezone "Europe/London"
+    ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
     hwclock --systohc
 
     log INFO "WRITE HOSTNAME: $hostname" "$output" \
     write-hostname "$hostname"
 
     log INFO "CONFIGURE LOCALE" "$output"
-    configure-locale "en_US.UTF-8" "UTF-8"
+    configure-locale "en_GB.UTF-8" "UTF-8"
+
+    echo "KEYMAP=colemak" >> /etc/vconsole.conf
 
     log INFO "ADD ROOT" "$output"
     dialog --title "root password" --msgbox "It's time to add a password for the root user" 10 60
@@ -97,6 +99,8 @@ configure-locale() {
     locale-gen
     echo "LANG=$locale" > /etc/locale.conf
 }
+
+
 
 config_user() {
     local name=${1:-none}
