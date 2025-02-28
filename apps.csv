@@ -9,7 +9,6 @@ essential,python-dbus,Useful for certain things
 network,networkmanager,Network manager
 network,openssh,Remote login tool for SSH protocol
 network,wget,Tool for retrieving files using HTTP HTTPS FTP and FTPS
-network,mullvad-vpn-cli,Mullvad VPN (AUR)
 network,lynx,CLI Browser
 compression,unzip,Compress / uncompress zip files
 audio,flac,Flac audio
@@ -77,3 +76,4 @@ phone,android-file-transfer,Transfer files to and from your phone.
 phone,scrcpy,Share your phone screen onto your system.
 signal,signal-desktop,Signal Desktop Client
 luanti,luanti,Minecraft but better
+mullvad,mullvad-vpn-cli,Mullvad VPN (AUR)
