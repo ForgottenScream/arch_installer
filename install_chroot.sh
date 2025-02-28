@@ -26,12 +26,16 @@ grub-mkconfig -o /boot/grub/grub.cfg
 hwclock --systohc
 
 # setting timezones and locales, putting PT there incase there is a need to switch
-timedatectl set-timezone Europe/London
+ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
 
 echo "en_GB.UTF-8 UTF-8" >> /etc/locale.gen
 echo "pt_PT.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
-echo "LANG=en_GB.UTF-8" > /etc/locale.conf
+echo "LANG=en_GB.UTF-8" > /etc/locale.gonf
+
+# Set keymap layout, mine is colemak so
+loadkeys colemak
+echo "KEYMAP=colemak" >> /etc/vconsole.conf
 
 function config_user() {
     if [ -z "$1" ]; then
@@ -45,20 +49,22 @@ function config_user() {
         dialog --no-cancel --passwordbox "Confirm your password." \
             10 60 2> pass2
 
-        while [ "$(cat pass1)" != "$(cat pass2)"
+        while [ "$(cat pass1)" != "$(cat pass2)" ]
         do
             dialog --no-cancel --passwordbox \
-                "The passwords do not match.\n\n\Enter your password again." \
+                "The passwords do not match.\n\n\ Enter your password again." \
                 10 60 2> pass1
             dialog --no-cancel --passwordbox \
                 "Retype your password." \
                 10 60 2> pass2
         done
+
         name=$(cat name) && rm name
         pass1=$(cat pass1) && rm pass1 pass2
 
         # Create user if does not exist
         if [[ ! "$(id -u "$name" 2> /dev/null)" ]]; then
+            dialog --infobox "Adding user $name..." 4 50
             useradd -m -g wheel -s /bin/bash "$name"
         fi
 
@@ -67,7 +73,7 @@ function config_user() {
 }
 
 dialog --title "Root password" \
-    --msgbox "It is time to add a password for the root user.\n\Not the same as user." \
+    --msgbox "It is time to add a password for the root user." \
     10 60
 config_user root
 
