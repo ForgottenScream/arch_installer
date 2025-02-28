@@ -1,4 +1,4 @@
-g!/bin/bash
+#!/bin/bash
 
 name=$(cat /tmp/user_name)
 
