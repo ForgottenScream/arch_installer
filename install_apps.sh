@@ -4,7 +4,6 @@ name=$(cat /tmp/user_name)
 
 apps_path="/tmp/apps.csv"
 
-# Don't forget to replace "Phantas0s" by the username of your Github account
 curl https://raw.githubusercontent.com/ForgottenScream\
 /arch_installer/main/apps.csv > $apps_path
 
