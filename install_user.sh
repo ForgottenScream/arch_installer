@@ -27,7 +27,7 @@ log() {
 }
 
 create-directories() {
-    mkdir -p /home/"$(whoami)"/{Documents,Download,Music}
+    mkdir -p /home/"$(whoami)"/{Workstation}
 }
 
 install-yay() {
