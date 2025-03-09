@@ -55,7 +55,7 @@ download-app-csv() {
 
 add-pacman.conf() {
     dialog --infobox "Copy user pacman.conf..." 4 40
-    curl "$url_installer/sudoers" > /etc/pacman.conf
+    curl "$url_installer/pacman.conf" > /etc/pacman.conf
 }
 
 dialog-welcome() {
@@ -74,37 +74,20 @@ dialog-choose-apps() {
         "i3" "i3 Tile manager & Desktop" on
         "tmux" "Tmux" on
         "neovim" "Neovim" on
-        "keyring" "Keyring applications" on
         "urxvt" "Urxvt unicode" on
         "zsh" "Unix Z-Shell (zsh)" on
         "ripgrep" "Ripgrep" on \
-        "qutebrowser" "Qutebrowser" on
         "notify" "Notifications with dunst & libnotify" on
-        "gtk" "GTK 3 themes and icons" on
-        "programming" "Programming environments (PHP, Ruby, Go, Docker, Clojure)" on
+        "programming" "Programming environments" on
         "keepass" "Keepass" on
-        "sql" "Mysql (mariadb) & mysql tools" on
         "office" "Office tools (Libreoffice...)" off
-        "multimedia" "Multimedia" off
-        "videography" "Video creation" off
-        "graphism" "Design" off
-        "photography" "Photography tools" off
+        "video" "Watch Youtube" off
         "firefox" "Firefox (browser)" off
-        "brave" "brave (browser)" off
-        "newsboat" "RSS Feed Reader" on
-        "joplin" "Note taking system" off
-        "thunar" "Graphical file manager" off
-        "thunderbird" "Thunderbird" off
         "pandoc" "Pandoc and usefull dependencies" off
-        "syncthing" "Sync files via P2P" off
-        "rover" "Simple file browser for the terminal" off
-        "language" "Language tools" off
-        "nextcloud" "Nextcloud client" off
-        "hugo" "Hugo static site generator" off
-        "freemind" "Freemind - mind mapping software" off
-        "doublecmd" "Double Commander - File explorer a la FreeCommander" off
-        "vmware" "Vmware tools" off
-        "gaming" "Almost everything for gaming on Linux" off)
+        "mullvad" "Mullvad VPN CLI" off
+        "signal" "Signal Desktop Client" on
+        "phone" "Phone utilities" on
+        "luanti" "Luanti - Better than Minecraft" off
 
     dialog --checklist "You can now choose the groups of applications you want to install, according to your own CSV file.\n\n Press SPACE to select and ENTER to validate your choices." 0 0 0 "${apps[@]}" 2> "$file"
 }
@@ -155,12 +138,6 @@ dialog-install-apps() {
         if [ "$dry_run" = false ]; then
             pacman-install "$line" "$output"
 
-            # Needed if system installed in VMWare
-            if [ "$line" = "open-vm-tools" ]; then
-                systemctl enable vmtoolsd.service
-                systemctl enable vmware-vmblock-fuse.service
-            fi
-
             if [ "$line" = "networkmanager" ]; then
                 # Enable the systemd service NetworkManager.
                 systemctl enable NetworkManager.service
@@ -171,19 +148,6 @@ dialog-install-apps() {
                 chsh -s "$(which zsh)" "$name"
             fi
 
-            if [ "$line" = "docker" ]; then
-                groupadd docker
-                gpasswd -a "$name" docker
-                systemctl enable docker.service
-            fi
-
-            if [ "$line" = "at" ]; then
-                systemctl enable atd.service
-            fi
-
-            if [ "$line" = "mariadb" ]; then
-                mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-            fi
         else
             fake_install "$line"
         fi

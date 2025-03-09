@@ -9,7 +9,6 @@ essential,python-dbus,Useful for certain things
 network,networkmanager,Network manager
 network,openssh,Remote login tool for SSH protocol
 network,wget,Tool for retrieving files using HTTP HTTPS FTP and FTPS
-network,lynx,CLI Browser
 compression,unzip,Compress / uncompress zip files
 audio,flac,Flac audio
 audio,alsa-utils,Utils to control sound card
