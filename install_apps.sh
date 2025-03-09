@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 run() {
     output=$(cat /var_output)
@@ -87,7 +87,7 @@ dialog-choose-apps() {
         "mullvad" "Mullvad VPN CLI" off
         "signal" "Signal Desktop Client" on
         "phone" "Phone utilities" on
-        "luanti" "Luanti - Better than Minecraft" off
+        "luanti" "Luanti - Better than Minecraft" off)
 
     dialog --checklist "You can now choose the groups of applications you want to install, according to your own CSV file.\n\n Press SPACE to select and ENTER to validate your choices." 0 0 0 "${apps[@]}" 2> "$file"
 }
