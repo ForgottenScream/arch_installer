@@ -31,6 +31,8 @@ run() {
     log INFO "HORRIBLE BEEP DISABLED" "$output"
     set-user-permissions
     log INFO "USER PERMISSIONS SET" "$output"
+    add-pacman-configuration-file
+    log INFO "PACMAN CONF FILE ADDED" "$output"
 
     continue-install "$url_installer" "$name"
 }
@@ -180,6 +182,11 @@ continue-install() {
 set-user-permissions() {
     dialog --infobox "Copy user permissions configuration (sudoers)..." 4 40
     curl "$url_installer/sudoers" > /etc/sudoers
+}
+
+add-pacman-configuration-file() {
+    dialog --infobox "Copy pacman configuration file (pacman.conf)..." 4 40
+    curl "$url_installer/pacman.conf" > /etc/pacman.conf
 }
 
 disable-horrible-beep() {
