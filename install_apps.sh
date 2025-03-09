@@ -11,8 +11,8 @@ run() {
     log INFO "DOWNLOAD APPS CSV" "$output"
     apps_path="$(download-app-csv "$url_installer")"
     log INFO "APPS CSV DOWNLOADED AT: $apps_path" "$output"
-    configure-pacman
-    log INFO "PACMAN CONFIGURED" "$output"
+    add-pacman.conf()
+    log INFO "PACMAN.CONF ADDED" "$output"
     dialog-welcome
     dialog-choose-apps ch
     choices=$(cat ch) && rm ch
@@ -53,15 +53,9 @@ download-app-csv() {
     echo $apps_path
 }
 
-# Configure /etc/pacman.conf
-configure-pacman() {
-    echo "[multilib]" >> /etc/pacman.conf
-    echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
-    echo "[extra_settings]" >> /etc/pacman.conf
-    echo "Color" >> /etc/pacman.conf
-    echo "VerbosePkgLists" >> /etc/pacman.conf
-    echo "ParallelDownloads = 5" >> /etc/pacman.conf
-    echo "ILoveCandy" >> /etc/pacman.conf
+add-pacman.conf() {
+dialog --infobox "Copy pacman.conf configurations (pacman.conf)..." 4 40
+    curl "$url_installer/pacman.conf" > /etc/pacman.conf
 }
 
 dialog-welcome() {
