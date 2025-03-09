@@ -11,8 +11,8 @@ run() {
     log INFO "DOWNLOAD APPS CSV" "$output"
     apps_path="$(download-app-csv "$url_installer")"
     log INFO "APPS CSV DOWNLOADED AT: $apps_path" "$output"
-    add-multilib-repo
-    log INFO "MULTILIB ADDED" "$output"
+    add-pacman.conf
+    log INFO "PACMAN.CONF ADDED" "$output"
     dialog-welcome
     dialog-choose-apps ch
     choices=$(cat ch) && rm ch
@@ -53,9 +53,9 @@ download-app-csv() {
     echo $apps_path
 }
 
-# Add multilib repo for steam
-add-multilib-repo() {
-    echo "[multilib]" >> /etc/pacman.conf && echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
+add-pacman.conf() {
+    dialog --infobox "Copy user pacman.conf..." 4 40
+    curl "$url_installer/sudoers" > /etc/pacman.conf
 }
 
 dialog-welcome() {
