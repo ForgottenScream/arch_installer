@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 run() {
     output=$(cat /var_output)
@@ -11,8 +11,8 @@ run() {
     log INFO "DOWNLOAD APPS CSV" "$output"
     apps_path="$(download-app-csv "$url_installer")"
     log INFO "APPS CSV DOWNLOADED AT: $apps_path" "$output"
-    add-pacman.conf
-    log INFO "PACMAN.CONF ADDED" "$output"
+    add-multilib-repo
+    log INFO "MULTILIB ADDED" "$output"
     dialog-welcome
     dialog-choose-apps ch
     choices=$(cat ch) && rm ch
@@ -55,9 +55,9 @@ download-app-csv() {
     echo $apps_path
 }
 
-add-pacman.conf() {
-    dialog --infobox "Copy user pacman.conf..." 4 40
-    curl "$url_installer/pacman.conf" > /etc/pacman.conf
+# Add multilib repo for steam
+add-multilib-repo() {
+    echo "[multilib]" >> /etc/pacman.conf && echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
 }
 
 dialog-welcome() {
@@ -78,7 +78,7 @@ dialog-choose-apps() {
         "neovim" "Neovim" on
         "urxvt" "Urxvt unicode" on
         "zsh" "Unix Z-Shell (zsh)" on
-        "ripgrep" "Ripgrep" on \
+        "ripgrep" "Ripgrep" on 
         "notify" "Notifications with dunst & libnotify" on
         "programming" "Programming environments" on
         "keepass" "Keepass" on
@@ -140,6 +140,12 @@ dialog-install-apps() {
         if [ "$dry_run" = false ]; then
             pacman-install "$line" "$output"
 
+            # Needed if system installed in VMWare
+            if [ "$line" = "open-vm-tools" ]; then
+                systemctl enable vmtoolsd.service
+                systemctl enable vmware-vmblock-fuse.service
+            fi
+
             if [ "$line" = "networkmanager" ]; then
                 # Enable the systemd service NetworkManager.
                 systemctl enable NetworkManager.service
@@ -150,6 +156,19 @@ dialog-install-apps() {
                 chsh -s "$(which zsh)" "$name"
             fi
 
+            if [ "$line" = "docker" ]; then
+                groupadd docker
+                gpasswd -a "$name" docker
+                systemctl enable docker.service
+            fi
+
+            if [ "$line" = "at" ]; then
+                systemctl enable atd.service
+            fi
+
+            if [ "$line" = "mariadb" ]; then
+                mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+            fi
         else
             fake_install "$line"
         fi
