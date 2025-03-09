@@ -11,8 +11,6 @@ run() {
     log INFO "DOWNLOAD APPS CSV" "$output"
     apps_path="$(download-app-csv "$url_installer")"
     log INFO "APPS CSV DOWNLOADED AT: $apps_path" "$output"
-    add-pacman.conf()
-    log INFO "PACMAN.CONF ADDED" "$output"
     dialog-welcome
     dialog-choose-apps ch
     choices=$(cat ch) && rm ch
