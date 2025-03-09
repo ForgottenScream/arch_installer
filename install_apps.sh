@@ -33,6 +33,8 @@ run() {
     log INFO "USER PERMISSIONS SET" "$output"
     add-pacman-configuration-file
     log INFO "PACMAN CONF FILE ADDED" "$output"
+    set-keyboard-colemak
+    log INFO "KEYBOARD SET TO COLEMAK" "$output"
 
     continue-install "$url_installer" "$name"
 }
@@ -206,6 +208,15 @@ set-user-permissions() {
 add-pacman-configuration-file() {
     dialog --infobox "Copy pacman configuration file (pacman.conf)..." 4 40
     curl "$url_installer/pacman.conf" > /etc/pacman.conf
+}
+
+set-keyboard-colemak() {
+mkdir -p /etc/X11/xorg.conf.d
+echo -e "Section \"InputClass\"
+    Identifier \"system-keyboard\"
+    MatchIsKeyboard \"on\"
+    Option \"XkbLayout\" \"colemak\"
+EndSection" > /etc/X11/xorg.conf.d/00-keyboard.conf
 }
 
 disable-horrible-beep() {
