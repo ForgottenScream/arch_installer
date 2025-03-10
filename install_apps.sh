@@ -211,12 +211,8 @@ add-pacman-configuration-file() {
 }
 
 set-keyboard-colemak() {
-mkdir -p /etc/X11/xorg.conf.d
-echo -e "Section \"InputClass\"
-    Identifier \"system-keyboard\"
-    MatchIsKeyboard \"on\"
-    Option \"XkbLayout\" \"colemak\"
-EndSection" > /etc/X11/xorg.conf.d/00-keyboard.conf
+    dialog --infobox "Copy X11 Keyboard Configuration file (00-keyboard.conf)..." 4 40
+    curl "$url_installer/00-keyboard.conf" > /etc/X11/xorg.conf.d/00-keyboard.conf
 }
 
 disable-horrible-beep() {
