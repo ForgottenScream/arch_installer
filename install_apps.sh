@@ -35,6 +35,8 @@ run() {
     log INFO "PACMAN CONF FILE ADDED" "$output"
     set-keyboard-colemak
     log INFO "KEYBOARD SET TO COLEMAK" "$output"
+    set-touchpad-on
+    log INFO "TOUCHPAD SET TO TOUCH ON" "$output"
 
     continue-install "$url_installer" "$name"
 }
@@ -214,6 +216,10 @@ set-keyboard-colemak() {
     dialog --infobox "Copy X11 Keyboard Configuration file (00-keyboard.conf)..." 4 40
     curl "$url_installer/00-keyboard.conf" > /etc/X11/xorg.conf.d/00-keyboard.conf
 }
+
+set-touchpad-on(){
+    dialog --infobox "Copy X11 Touchpad Configuration file (40-libinput.conf)..." 4 40
+    curl "$url_installer/40-libinput.conf" > /etc/X11/xorg.conf.d/40-libinput.conf
 
 disable-horrible-beep() {
     rmmod pcspkr
