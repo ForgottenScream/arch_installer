@@ -220,6 +220,7 @@ set-keyboard-colemak() {
 set-touchpad-on(){
     dialog --infobox "Copy X11 Touchpad Configuration file (40-libinput.conf)..." 4 40
     curl "$url_installer/40-libinput.conf" > /etc/X11/xorg.conf.d/40-libinput.conf
+}
 
 disable-horrible-beep() {
     rmmod pcspkr
