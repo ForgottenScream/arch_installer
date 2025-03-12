@@ -100,7 +100,7 @@ install-dialog() {
 dialog-are-you-sure() {
     dialog --defaultno \
         --title "Are you sure?" \
-        --yesno "This is my personal arch linux install. \n\n\
+        --yesno "This is my personal Arch Linux install. \n\n\
         It will just DESTROY EVERYTHING on the hard disk of your choice. \n\n\
         Don't say YES if you are not sure about what you're doing! \n\n\
         Are you sure?"  15 60 || exit
@@ -108,7 +108,7 @@ dialog-are-you-sure() {
 
 dialog-name-of-computer() {
     local file=${1:?}
-    dialog --no-cancel --inputbox "Enter a name for your computer." 10 60 2> "$file"
+    dialog --no-cancel --inputbox "Enter a name for your machine." 10 60 2> "$file"
 }
 
 is-uefi() {
