@@ -144,12 +144,6 @@ dialog-install-apps() {
         if [ "$dry_run" = false ]; then
             pacman-install "$line" "$output"
 
-            # Needed if system installed in VMWare
-            if [ "$line" = "open-vm-tools" ]; then
-                systemctl enable vmtoolsd.service
-                systemctl enable vmware-vmblock-fuse.service
-            fi
-
             if [ "$line" = "networkmanager" ]; then
                 # Enable the systemd service NetworkManager.
                 systemctl enable NetworkManager.service
@@ -158,16 +152,6 @@ dialog-install-apps() {
             if [ "$line" = "zsh" ]; then
                 # zsh as default terminal for user
                 chsh -s "$(which zsh)" "$name"
-            fi
-
-            if [ "$line" = "docker" ]; then
-                groupadd docker
-                gpasswd -a "$name" docker
-                systemctl enable docker.service
-            fi
-
-            if [ "$line" = "at" ]; then
-                systemctl enable atd.service
             fi
 
             if [ "$line" = "mariadb" ]; then
