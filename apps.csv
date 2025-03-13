@@ -9,7 +9,6 @@ essential,python-dbus,Useful for certain things
 network,networkmanager,Network manager
 network,openssh,Remote login tool for SSH protocol
 network,wget,Tool for retrieving files using HTTP HTTPS FTP and FTPS
-compression,unzip,Compress / uncompress zip files
 audio,flac,Flac audio
 audio,alsa-utils,Utils to control sound card
 audio,pipewire,Low level multimedia framework
@@ -17,6 +16,8 @@ audio,pipewire-alsa,Sound Architecture
 audio,pipewire-pulse,Sound Middleware
 audio,pavucontrol,Control panel for input hardware
 audio,pulsemixer,Alternative to pavucontrol in terminal
+tools,zip,Zip files
+tools,unzip,Unzip files
 tools,picom,Compositor for X - manage transparency
 tools,btop,Interactive process viewer
 tools,xsel,Manipulate the X selection
@@ -28,6 +29,7 @@ tools,scrot,Screenshot software for i3lock
 tools,xclip,CLI to Clipboard
 tools,redshift,Adjust color of screen
 tools,udiskie,Automount devices
+tools,ripgrep,Line oriented search tool (grep improved)
 tmux,tmux,Terminal multiplexer
 tmux,tmuxp,Configure tmux session + windows + panes via config files
 git,git,Version control system
@@ -36,6 +38,7 @@ i3,i3-wm,i3 window tile manager
 i3,i3status,i3 status bar
 i3,i3lock-color,i3 lock monitor (AUR)
 i3,dmenu,Dynamic menu for X
+i3,Xterm,X Terminal
 i3,feh,X11 image viewer
 i3,xdg-utils,Allow application to interact with the desktop
 i3,brightnessctl,To control screen brightness
@@ -55,8 +58,8 @@ neovim,python-neovim,Python for neovim
 neovim,python2-neovim,Python2 for neovim
 neovim,ruby-neovim,Ruby for neovim (AUR)
 urxvt,rxvt-unicode,Terminal Urxvt
-ripgrep,ripgrep,Line oriented search tool (grep improved)
 multimedia,mpv,Free video player
+multimedia,freetube-bin,Watch youtube (AUR)
 office,libreoffice,Office suite
 office,zathura-pdf-mupdf,Highly customizable PDF reader
 office,scribus,Document editing software
@@ -65,13 +68,9 @@ pandoc,lua-lpeg,Necessary library for Pandoc Lua filters
 pandoc,texlive-most,Tex Document Production System
 pandoc,texlive-most-doc,Most doc for LaTex (AUR)
 firefox,firefox,Browser Firefox
-qutebrowser,qutebrowser,Mouseless browser
 keepass,keepassxc,Secure password management
-cherrytree,cherrytree,Useful for note taking
 qbittorrent,qbittorrent,Torrenting Client
-video,freetube-bin,Watch youtube (AUR)
 phone,android-file-transfer,Transfer files to and from your phone.
 phone,scrcpy,Share your phone screen onto your system.
 signal,signal-desktop,Signal Desktop Client
-luanti,luanti,Minecraft but better
 mullvad,mullvad-vpn-cli,Mullvad VPN (AUR)
