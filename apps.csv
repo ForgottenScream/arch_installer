@@ -16,6 +16,7 @@ audio,pipewire-alsa,Sound Architecture
 audio,pipewire-pulse,Sound Middleware
 audio,pavucontrol,Control panel for input hardware
 audio,pulsemixer,Alternative to pavucontrol in terminal
+tools,btop,tool to analyze system resources
 tools,bat, cat with syntax highlighting and git integration
 tools,zip,Zip files
 tools,unzip,Unzip files
