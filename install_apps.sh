@@ -82,7 +82,6 @@ dialog-choose-apps() {
         "programming" "Programming environments" on
         "zsh" "Unix Z-Shell (zsh)" on
         "neovim" "Neovim" on
-        "urxvt" "Urxvt unicode" on
 	"multimedia" "Packages for watching or streaming media" on
         "keepass" "Keepass" on
         "office" "Office tools (Libreoffice...)" off
