@@ -86,8 +86,8 @@ dialog-choose-apps() {
         "keepass" "Keepass" on
         "office" "Office tools (Libreoffice...)" off
         "pandoc" "Pandoc and usefull dependencies" off
-        "firefox" "Firefox (browser)" off
-        "keepass" "Keepass" on
+        "firefox" "Firefox (browser)" on
+        "keepass" "Keepass" off
 	"qbittorrent" "Torrenting Client" off
 	"phone" "Phone utilities" on
         "signal" "Signal Desktop Client" on
