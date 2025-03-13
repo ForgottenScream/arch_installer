@@ -72,28 +72,27 @@ dialog-choose-apps() {
     local file=${1:?}
 
     apps=("essential" "Essentials" on
-        "compression" "Compression Tools" on
-        "tools" "Very nice tools to have (highly recommended)" on
+        "network" "Network Configuration" on
         "audio" "Audio tools" on
-        "network" "Network Configuration" off
+        "tools" "Very nice tools to have (highly recommended)" on
+        "tmux" "Tmux" on
         "git" "Git & git tools" on
         "i3" "i3 Tile manager & Desktop" on
-        "tmux" "Tmux" on
-        "neovim" "Neovim" on
-        "urxvt" "Urxvt unicode" on
-        "zsh" "Unix Z-Shell (zsh)" on
-        "ripgrep" "Ripgrep" on 
         "notify" "Notifications with dunst & libnotify" on
         "programming" "Programming environments" on
+        "zsh" "Unix Z-Shell (zsh)" on
+        "neovim" "Neovim" on
+        "urxvt" "Urxvt unicode" on
+	"multimedia" "Packages for watching or streaming media" on
         "keepass" "Keepass" on
         "office" "Office tools (Libreoffice...)" off
-        "video" "Watch Youtube" off
-        "firefox" "Firefox (browser)" off
         "pandoc" "Pandoc and usefull dependencies" off
-        "mullvad" "Mullvad VPN CLI" off
+        "firefox" "Firefox (browser)" off
+        "keepass" "Keepass" on
+	"qbittorrent" "Torrenting Client" off
+	"phone" "Phone utilities" on
         "signal" "Signal Desktop Client" on
-        "phone" "Phone utilities" on
-        "luanti" "Luanti - Better than Minecraft" off)
+	"mullvad" "Mullvad VPN CLI" on)
 
     dialog --checklist "You can now choose the groups of applications you want to install, according to your own CSV file.\n\n Press SPACE to select and ENTER to validate your choices." 0 0 0 "${apps[@]}" 2> "$file"
 }
