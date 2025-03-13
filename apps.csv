@@ -38,7 +38,7 @@ i3,i3-wm,i3 window tile manager
 i3,i3status,i3 status bar
 i3,i3lock-color,i3 lock monitor (AUR)
 i3,dmenu,Dynamic menu for X
-i3,Xterm,X Terminal
+i3,xterm,X Terminal
 i3,feh,X11 image viewer
 i3,xdg-utils,Allow application to interact with the desktop
 i3,brightnessctl,To control screen brightness
