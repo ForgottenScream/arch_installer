@@ -32,6 +32,9 @@ tools,xclip,CLI to Clipboard
 tools,redshift,Adjust color of screen
 tools,udiskie,Automount devices
 tools,ripgrep,Line oriented search tool (grep improved)
+tools,feh,X11 image viewer
+tools,brightnessctl,To control screen brightness
+tools,xdg-utils,Allow application to interact with the desktop
 tmux,tmux,Terminal multiplexer
 tmux,tmuxp,Configure tmux session + windows + panes via config files
 git,git,Version control system
@@ -41,9 +44,6 @@ i3,i3status,i3 status bar
 i3,i3lock-color,i3 lock monitor (AUR)
 i3,dmenu,Dynamic menu for X
 i3,xterm,X Terminal
-i3,feh,X11 image viewer
-i3,xdg-utils,Allow application to interact with the desktop
-i3,brightnessctl,To control screen brightness
 notify,dunst,Notification system
 notify,libnotify,Notifier
 programming,npm,Infamous javascript package manager
@@ -75,3 +75,4 @@ phone,android-file-transfer,Transfer files to and from your phone.
 phone,scrcpy,Share your phone screen onto your system.
 signal,signal-desktop,Signal Desktop Client
 mullvad,mullvad-vpn-cli,Mullvad VPN (AUR)
+rustdesk,rustdesk-bin,Remote desktop software, written in Rust.
