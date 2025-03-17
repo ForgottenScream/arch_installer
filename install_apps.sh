@@ -31,12 +31,6 @@ run() {
     log INFO "HORRIBLE BEEP DISABLED" "$output"
     set-user-permissions
     log INFO "USER PERMISSIONS SET" "$output"
-    add-pacman-configuration-file
-    log INFO "PACMAN CONF FILE ADDED" "$output"
-    set-keyboard-colemak
-    log INFO "KEYBOARD SET TO COLEMAK" "$output"
-    set-touchpad-on
-    log INFO "TOUCHPAD SET TO TOUCH ON" "$output"
 
     continue-install "$url_installer" "$name"
 }
@@ -65,32 +59,33 @@ add-multilib-repo() {
 }
 
 dialog-welcome() {
-    dialog --title "Welcome!" --msgbox "Welcome to ForgottenScream's dotfiles and software installation script for Arch linux.\n" 10 60
+    dialog --title "Welcome!" --msgbox "Welcome to my dotfiles and software installation script for Arch linux.\n" 10 60
 }
 
 dialog-choose-apps() {
     local file=${1:?}
 
     apps=("essential" "Essentials" on
-        "network" "Network Configuration" on
-        "audio" "Audio tools" on
         "tools" "Very nice tools to have (highly recommended)" on
-        "tmux" "Tmux" on
+        "audio" "Audio tools" on
+        "network" "Network Configuration" off
         "git" "Git & git tools" on
         "i3" "i3 Tile manager & Desktop" on
-        "notify" "Notifications with dunst & libnotify" on
-        "programming" "Programming environments" off
-        "zsh" "Unix Z-Shell (zsh)" on
+        "tmux" "Tmux" on
         "neovim" "Neovim" on
-	"multimedia" "Packages for watching or streaming media" on
+        "zsh" "Unix Z-Shell (zsh)" on
+        "notify" "Notifications with dunst & libnotify" on
+        "programming" "Programming environments (PHP, Ruby, Go, Docker, Clojure)" on
+        "keepass" "Keepass" on
         "office" "Office tools (Libreoffice...)" off
-        "pandoc" "Pandoc and usefull dependencies" off
-        "firefox" "Firefox (browser)" on
-        "keepass" "Keepass" off
+        "multimedia" "Multimedia" off
+        "firefox" "Firefox (browser)" off
 	"qbittorrent" "Torrenting Client" off
-	"phone" "Phone utilities" on
-        "signal" "Signal Desktop Client" on
-	"mullvad" "Mullvad VPN CLI" off)
+ 	"phone" "Phone stuff" off
+  	"signal" "Signal Desktop Client" off
+   	"mullvad" "Mullvad VPN CLI" off
+    	"rustdesk" "Remote desktop client in Rust" off
+        "pandoc" "Pandoc and usefull dependencies" off
 
     dialog --checklist "You can now choose the groups of applications you want to install, according to your own CSV file.\n\n Press SPACE to select and ENTER to validate your choices." 0 0 0 "${apps[@]}" 2> "$file"
 }
@@ -151,9 +146,6 @@ dialog-install-apps() {
                 chsh -s "$(which zsh)" "$name"
             fi
 
-            if [ "$line" = "mariadb" ]; then
-                mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-            fi
         else
             fake_install "$line"
         fi
@@ -186,21 +178,6 @@ continue-install() {
 set-user-permissions() {
     dialog --infobox "Copy user permissions configuration (sudoers)..." 4 40
     curl "$url_installer/sudoers" > /etc/sudoers
-}
-
-add-pacman-configuration-file() {
-    dialog --infobox "Copy pacman configuration file (pacman.conf)..." 4 40
-    curl "$url_installer/pacman.conf" > /etc/pacman.conf
-}
-
-set-keyboard-colemak() {
-    dialog --infobox "Copy X11 Keyboard Configuration file (00-keyboard.conf)..." 4 40
-    curl "$url_installer/00-keyboard.conf" > /etc/X11/xorg.conf.d/00-keyboard.conf
-}
-
-set-touchpad-on(){
-    dialog --infobox "Copy X11 Touchpad Configuration file (40-libinput.conf)..." 4 40
-    curl "$url_installer/40-libinput.conf" > /etc/X11/xorg.conf.d/40-libinput.conf
 }
 
 disable-horrible-beep() {
