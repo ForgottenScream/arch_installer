@@ -85,7 +85,7 @@ dialog-choose-apps() {
   	"signal" "Signal Desktop Client" off
    	"mullvad" "Mullvad VPN CLI" off
     	"rustdesk" "Remote desktop client in Rust" off
-        "pandoc" "Pandoc and usefull dependencies" off
+        "pandoc" "Pandoc and usefull dependencies" off)
 
     dialog --checklist "You can now choose the groups of applications you want to install, according to your own CSV file.\n\n Press SPACE to select and ENTER to validate your choices." 0 0 0 "${apps[@]}" 2> "$file"
 }
