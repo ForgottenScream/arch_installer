@@ -75,4 +75,4 @@ phone,android-file-transfer,Transfer files to and from your phone.
 phone,scrcpy,Share your phone screen onto your system.
 signal,signal-desktop,Signal Desktop Client
 mullvad,mullvad-vpn-cli,Mullvad VPN (AUR)
-rustdesk,rustdesk-bin,Remote desktop software, written in Rust.
+rustdesk,rustdesk-bin,Remote desktop software written in Rust.
