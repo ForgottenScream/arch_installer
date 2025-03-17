@@ -79,11 +79,10 @@ dialog-choose-apps() {
         "git" "Git & git tools" on
         "i3" "i3 Tile manager & Desktop" on
         "notify" "Notifications with dunst & libnotify" on
-        "programming" "Programming environments" on
+        "programming" "Programming environments" off
         "zsh" "Unix Z-Shell (zsh)" on
         "neovim" "Neovim" on
 	"multimedia" "Packages for watching or streaming media" on
-        "keepass" "Keepass" on
         "office" "Office tools (Libreoffice...)" off
         "pandoc" "Pandoc and usefull dependencies" off
         "firefox" "Firefox (browser)" on
@@ -91,7 +90,7 @@ dialog-choose-apps() {
 	"qbittorrent" "Torrenting Client" off
 	"phone" "Phone utilities" on
         "signal" "Signal Desktop Client" on
-	"mullvad" "Mullvad VPN CLI" on)
+	"mullvad" "Mullvad VPN CLI" off)
 
     dialog --checklist "You can now choose the groups of applications you want to install, according to your own CSV file.\n\n Press SPACE to select and ENTER to validate your choices." 0 0 0 "${apps[@]}" 2> "$file"
 }
