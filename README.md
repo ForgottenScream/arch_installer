@@ -6,8 +6,10 @@ but it still works if you were planning to use it with a mouse as well.
 It will load the colemak layout.
 
 to install on arch live iso:
+
 bash <(curl -s https://raw.githubusercontent.com/ForgottenScream/arch_installer/main/install_sys.sh)
 
 Follow promps and pay attention to input the root password when applicable.
 
 Based on Mouseless Dev book. Recommend reading.
+ARCHIVED
